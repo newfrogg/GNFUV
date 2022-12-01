@@ -1,3 +1,5 @@
+## Get data from remote
+# Extract the .zip file from https://archive.ics.uci.edu/ml/machine-learning-databases/00452/GNFUV%20USV%20Dataset.zip
 ## Setup
 # Import needed library
 library(stringr)
@@ -30,7 +32,7 @@ Df$device <- str_replace(Df$device, pattern = "2bl8b", "mst_asv")
 Df$device <- str_replace(Df$device, pattern = "5g2xh", "plady_fleet1")
 Df$device <- str_replace(Df$device, pattern = "5ztk8", "plady_fleet3")
 Df$device <- str_replace(Df$device, pattern = "xcl97", "plady_fleet2")
-Df$device <- as.factor(Df$device)
+Df$device <- factor(Df$device, levels=c("mst_asv","plady_fleet1","plady_fleet2","plady_fleet3" ))
 
 Df$humidity <- str_replace(Df$humidity, pattern = "'humidity': ","")
 Df$humidity <- suppressWarnings(as.numeric(Df$humidity))
@@ -130,8 +132,17 @@ corr_matrix <- corrplot(cor(Df[,c(2,3,4)]), method = "number", type = "lower")
 # Inferential statistics
 
 
+# confidence interval & 1 sample test
+pairs(temperature ~ humidity+device+time, data = Df)
 
 
+## Linear regression model
+### explanation about linearmodel for factor variable
+### https://stackoverflow.com/questions/67020730/why-summary-a-linear-model-in-r-does-not-show-all-the-needed-levels
+model1 <- lm(temperature ~ humidity+time+device, data = Df)
+model1
+anova(model1)
+summary(model1)
 
 
 
