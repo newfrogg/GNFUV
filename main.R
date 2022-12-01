@@ -135,15 +135,24 @@ corr_matrix <- corrplot(cor(Df[,c(2,3,4)]), method = "number", type = "lower")
 # confidence interval & 1 sample test
 pairs(temperature ~ humidity+device+time, data = Df)
 
+# t-test humid vs temperature
+t.test(Df$humidity, Df$temperature, paired = T, mu = 0, alternative = "greater")
 
 ## Linear regression model
-### explanation about linearmodel for factor variable
-### https://stackoverflow.com/questions/67020730/why-summary-a-linear-model-in-r-does-not-show-all-the-needed-levels
+
 model1 <- lm(temperature ~ humidity+time+device, data = Df)
-model1
-anova(model1)
+
+# Model explanations
 summary(model1)
 
+# Model visualization
+plot(model1)
+
+# ANOVA 
+anova(model1)
+
+# Open a new separate plot window (for easier watching)
+## windows()
 
 
 
