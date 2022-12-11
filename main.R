@@ -6,6 +6,7 @@ library(stringr)
 library(ggplot2)
 library(corrplot)
 library(rstudioapi)
+library(lubridate)
 # Change working directory to current script directory
 setwd( dirname(getSourceEditorContext()$path) )
 # Clear env variable
@@ -48,6 +49,7 @@ Df$time <- str_replace(Df$time, pattern = "'time': ","")
 Df$time <- str_replace(Df$time, pattern = "\\}","")
 Df$time <- as.numeric(Df$time)
 
+date_time <- data.frame(Df$device,as_datetime(Df$time))
 
 na_loc <- apply(is.na(Df), 2, which)
 na_loc

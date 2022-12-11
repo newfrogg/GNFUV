@@ -1,0 +1,19 @@
+data format: {'device':___, 'humidity':___, 'experiment':1.0, 'time':___}
+interval time: 10s means 2 sampling times in alpha (0 < alpha < 10)
+
+boxplot: https://r-graph-gallery.com/boxplot.html
+Boxplot is probably the most commonly used chart type to compare distribution of several groups. 
+However, you should keep in mind that data distribution is hidden behind each box. 
+For instance, a normal distribution could look exactly the same as a bimodal distribution.
+Please read more explanation on this matter, and consider a violin plot or a ridgline chart instead.
+
+QQplot: https://data.library.virginia.edu/understanding-q-q-plots/
+
+
+
+t-test: https://www.scribbr.com/statistics/t-test/
+linear model with factor variable explan: https://stackoverflow.com/questions/67020730/why-summary-a-linear-model-in-r-does-not-show-all-the-needed-levels
+shapiro-test: https://www.geeksforgeeks.org/shapiro-wilk-test-in-r-programming/
+
+function
+- windows() : to open a new window just for plot
